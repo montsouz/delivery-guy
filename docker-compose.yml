@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  bot:
+    build: .
+    ports:
+      - "3333:3333"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - users-db:/data/db2
+
+volumes:
+  users-db:
+
